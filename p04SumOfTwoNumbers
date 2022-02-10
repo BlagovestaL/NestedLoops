@@ -1,0 +1,38 @@
+package NestedLoops.lab;
+
+import java.util.Scanner;
+
+public class p04SumOfTwoNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int start = Integer.parseInt(scanner.nextLine());
+        int end = Integer.parseInt(scanner.nextLine());
+        int magicNum = Integer.parseInt(scanner.nextLine());
+
+        int count = 0;
+        boolean isFound = false;
+
+        int x1 = 0;
+        int x2 = 0;
+
+        for (int x = start; x <= end; x++){
+            for (int y = start; y <= end; y++){
+                count++;
+                if (x + y == magicNum){
+                    x1 = x;
+                    x2 = y;
+                    isFound = true;
+                    break;
+                }
+            }if(isFound){
+                    break;
+        }
+        }
+        if (isFound) {
+            System.out.printf("Combination N:%d (%d + %d = %d)%n", count, x1, x2, magicNum);
+        }else {
+            System.out.printf("%d combinations - neither equals %d ", count, magicNum );
+        }
+    }
+}
