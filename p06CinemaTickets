@@ -1,0 +1,50 @@
+package NestedLoops.exe;
+
+import java.util.Scanner;
+
+public class p06CinemaTickets {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String movie = scanner.nextLine();
+        int totalTickets = 0;
+        int studentTicket = 0;
+        int standardTicket = 0;
+        int kidTicket = 0;
+
+        while (!movie.equals("Finish")){
+            int freePlaces = Integer.parseInt(scanner.nextLine());
+            String ticketType = scanner.nextLine();
+            int soldTickets = 0;
+
+            while (!ticketType.equals("End")) {
+                soldTickets++;
+                switch (ticketType) {
+                    case "student":
+                        studentTicket++;
+                        break;
+                    case "standard":
+                        standardTicket++;
+                        break;
+                    case "kid":
+                        kidTicket++;
+                        break;
+                }
+                if (soldTickets == freePlaces){
+                    break;
+                }
+                ticketType = scanner.nextLine();
+            }
+            totalTickets = totalTickets + soldTickets;
+
+            System.out.printf("%s - %.2f%% full.%n", movie, 1.0 * soldTickets/freePlaces*100 );
+            movie = scanner.nextLine();
+
+        }
+        System.out.printf("Total tickets: %d%n", totalTickets);
+        System.out.printf("%.2f%% student tickets.%n", 1.0 * studentTicket/totalTickets * 100);
+        System.out.printf("%.2f%% standard tickets.%n", 1.0 * standardTicket/ totalTickets * 100);
+        System.out.printf("%.2f%% kids tickets.", 1.0 * kidTicket/ totalTickets * 100);
+
+    }
+}
